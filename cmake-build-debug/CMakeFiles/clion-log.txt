@@ -1,4 +1,5 @@
 /opt/clion/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/kacper/Documents/git/openGL
+-- Found GLEW: /usr/include (found version "2.2.0") 
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/kacper/Documents/git/openGL/cmake-build-debug
