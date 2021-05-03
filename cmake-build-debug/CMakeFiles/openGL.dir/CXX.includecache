@@ -13,4 +13,10 @@ GLFW/glfw3.h
 -
 iostream
 -
+fstream
+-
+string
+-
+sstream
+-
 
