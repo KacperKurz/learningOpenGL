@@ -25,6 +25,8 @@ int main(void)
     if (glewInit() != GLEW_OK)
         std::cout<< "ERROR: glewInit didn't initialize properly!\n";
 
+    std::cout<< "INFO: OpenGl version is " <<glGetString(GL_VERSION)<<'n';
+
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
