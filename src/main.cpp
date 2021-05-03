@@ -27,17 +27,25 @@ int main(void)
 
     std::cout<< "INFO: OpenGl version is " <<glGetString(GL_VERSION)<<'n';
 
+    float positions[6] = {
+            -0.5f,-0.5f,
+             0.0f, 0.5f,
+             0.5f,-0.5f
+    };
+
+    unsigned int myTriangleBuffer;
+    glGenBuffers(1, &myTriangleBuffer);                                             //generate one buffer and assign it's index number to myTriangleBuffer
+    glBindBuffer(GL_ARRAY_BUFFER,myTriangleBuffer);                                 //set current buffer to one mentioned above
+    glBufferData(GL_ARRAY_BUFFER,6 * sizeof(float), positions, GL_STATIC_DRAW);     //set the size of our buffer (in bytes), provide data, and give OpenGL hint to how our buffer will be used
+
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
-        glBegin(GL_TRIANGLES);
-        glVertex2f(-0.5f,-0.5f);
-        glVertex2f(0.0f,0.5f);
-        glVertex2f(0.5f,-0.5f);
-        glEnd();
+        /* Draw a triangle using earlier defined buffer (note: the triangle won't be visible since we need to implement a shader) */
+        glDrawArrays(GL_TRIANGLES,0,3);
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
