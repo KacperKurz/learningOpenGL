@@ -38,13 +38,16 @@ int main(void)
     glBindBuffer(GL_ARRAY_BUFFER,myTriangleBuffer);                                 //set current buffer to one mentioned above
     glBufferData(GL_ARRAY_BUFFER,6 * sizeof(float), positions, GL_STATIC_DRAW);     //set the size of our buffer (in bytes), provide data, and give OpenGL hint to how our buffer will be used
 
+    glVertexAttribPointer(0,2,GL_FLOAT,GL_FALSE,sizeof(float)*2,nullptr);           //tell OpenGl how to interpret our buffer
+    glEnableVertexAttribArray(0);                                                   //remember to enable it!
+
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
-        /* Draw a triangle using earlier defined buffer (note: the triangle won't be visible since we need to implement a shader) */
+        /* Draw a triangle using earlier defined buffer (note: the triangle won't be visible since we need to implement a shader and vertex attributes) */
         glDrawArrays(GL_TRIANGLES,0,3);
 
         /* Swap front and back buffers */
