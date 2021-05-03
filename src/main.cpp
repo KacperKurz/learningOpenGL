@@ -73,7 +73,7 @@ static unsigned int CreateShader(const std::string& vertexShader, const std::str
     return program;
 }
 
-int main(void)
+int main()
 {
     GLFWwindow* window;
 
@@ -82,7 +82,7 @@ int main(void)
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(1920, 1080, "OpenGL app", NULL, NULL);
+    window = glfwCreateWindow(1920, 1080, "OpenGL app", nullptr, nullptr);
     if (!window)
     {
         glfwTerminate();
