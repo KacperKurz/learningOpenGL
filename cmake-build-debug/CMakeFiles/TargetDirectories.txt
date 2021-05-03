@@ -1,0 +1,3 @@
+/home/kacper/Documents/git/openGL/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/kacper/Documents/git/openGL/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/kacper/Documents/git/openGL/cmake-build-debug/CMakeFiles/openGL.dir
