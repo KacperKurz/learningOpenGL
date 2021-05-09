@@ -4,11 +4,29 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <cmath>
 
 struct ShaderProgramSource{
     std::string VertexSource;
     std::string FragmentSource;
 };
+
+void rotate(){
+    float positions[6];
+    static float iterator{};
+    iterator+=0.01f;
+
+    positions[0] = (-0.5f*(sin(iterator))+ -0.28866666666f*(cos(iterator)))*(sin(iterator));
+    positions[1] = (-0.5f*(cos(iterator))- -0.28866666666f*(sin(iterator)))*(sin(iterator));
+    positions[2] = (0.0f*(sin(iterator))+ 0.57733333333f*(cos(iterator)))*(sin(iterator));
+    positions[3] = (0.0f*(cos(iterator))- 0.57733333333f*(sin(iterator)))*(sin(iterator));
+    positions[4] = (0.5f*(sin(iterator))+ -0.28866666666f*(cos(iterator)))*(sin(iterator));
+    positions[5] = (0.5f*(cos(iterator))- -0.28866666666f*(sin(iterator)))*(sin(iterator));
+
+    glBufferData(GL_ARRAY_BUFFER,6 * sizeof(float), positions, GL_DYNAMIC_DRAW);
+
+
+}
 
 static ShaderProgramSource ParseShader(const std::string& filepath){
     std::ifstream stream(filepath);
@@ -82,7 +100,7 @@ int main()
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(1920, 1080, "OpenGL app", nullptr, nullptr);
+    window = glfwCreateWindow(1080, 1080, "OpenGL app", nullptr, nullptr);
     if (!window)
     {
         glfwTerminate();
@@ -99,9 +117,9 @@ int main()
     std::cout<< "INFO: OpenGl version is " <<glGetString(GL_VERSION)<<'n';
 
     float positions[6] = {
-            -0.5f,-0.5f,
-             0.0f, 0.5f,
-             0.5f,-0.5f
+            -0.5f,-0.28866666666f,
+             0.0f, 0.57733333333f,
+             0.5f,-0.28866666666f
     };
 
     unsigned int myTriangleBuffer;
@@ -119,6 +137,7 @@ int main()
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
+        rotate();
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
